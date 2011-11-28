@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+
+		<title>MooTools Modal Boostrap Demo</title>
+		<link href="images/shortcut.png" rel="shortcut icon" type="image/x-icon" />
+
+		<link rel="stylesheet" type="text/css" href="../Source/css/Modal.css"/>
+	</head>
+
+<body>
+
+    <div class="main">
+        <h1>BootStrap modal test field</h1>
+        <ul>
+            <li><a href="#interview" class="modal-overlay" data-title="long interview, scroll" data-footer="#footerTest" data-any-close="false" data-esc-close="true">Grab element with long text (scroll), footer from another element, can close with ESC, can't close by overlay</a></li>
+            <li><a href="#interview2" class="modal-overlay" data-title="headerTest" data-buttons="[{className:'right modal-close','text':'No, thanks','event':'cancel'},{className:'left','text':'Sure!','event':'confirm'}]" data-any-close="true">Grab short data from an element, title from another element, buttons with events, click on overlay closes, ESC won't (default)</a></li>
+
+            <li><a href="ajax.html" class="modal-overlay" data-type="ajax" data-title="Simon was here" data-overlay="false" data-esc-close="true">Grab contents via ajax from href, no overlay, custom title as string, ESC closes</a></li>
+        </ul>
+    </div>
+    <div class='none' id="interview">
+        <p>
+        .net: What have you been working on this year?
+        RH: Wow. I think a better question is what haven't I been working on this year! The past nine months feel like an absolute blur really, but there are a few major events and projects that occurred during 2011 that stand out for me. The first is that I somehow managed to write and get a book published by Apress. It's called Foundation HTML5 Canvas and it's a comprehensive guide on the 2D drawing technology that's now baked into all the major browsers. Writing a book is a great experience but I don't think I'll be doing it again in a hurry.
+        </p>
+        <p>
+        Another big event that happened this year is that I graduated with a First in my Interactive Media Production degree at Bournemouth University. The past three years of my life coming to a close has been a very weird feeling, but fortunately I already had a job lined up for after university which helped me move into the "real" world. It's that job which has been the biggest thing that has happened to me this year – somehow I managed to find myself working for Mozilla! I'm really chuffed about that and, although I've only been here two months, I'm itching to do some awesome stuff.
+        </p>
+        <p>
+        Aside from all of those events I've been working on two interesting projects, both related to my final year at university. One of them is the analysis of sentiment through Twitter, which ended up providing some really interesting results (who knew people liked kissing on a balcony so much?). The other is Rawkets, my HTML5 and WebSockets multiplayer space-shooter game.
+        </p>
+        <p>
+        .net: What have you been working on this year?
+        RH: Wow. I think a better question is what haven't I been working on this year! The past nine months feel like an absolute blur really, but there are a few major events and projects that occurred during 2011 that stand out for me. The first is that I somehow managed to write and get a book published by Apress. It's called Foundation HTML5 Canvas and it's a comprehensive guide on the 2D drawing technology that's now baked into all the major browsers. Writing a book is a great experience but I don't think I'll be doing it again in a hurry.
+        </p>
+        <p>
+        Another big event that happened this year is that I graduated with a First in my Interactive Media Production degree at Bournemouth University. The past three years of my life coming to a close has been a very weird feeling, but fortunately I already had a job lined up for after university which helped me move into the "real" world. It's that job which has been the biggest thing that has happened to me this year – somehow I managed to find myself working for Mozilla! I'm really chuffed about that and, although I've only been here two months, I'm itching to do some awesome stuff.
+        </p>
+        <p>
+
+        Aside from all of those events I've been working on two interesting projects, both related to my final year at university. One of them is the analysis of sentiment through Twitter, which ended up providing some really interesting results (who knew people liked kissing on a balcony so much?). The other is Rawkets, my HTML5 and WebSockets multiplayer space-shooter game.
+        </p>
+        <p>
+
+        .net: What have you been working on this year?
+        RH: Wow. I think a better question is what haven't I been working on this year! The past nine months feel like an absolute blur really, but there are a few major events and projects that occurred during 2011 that stand out for me. The first is that I somehow managed to write and get a book published by Apress. It's called Foundation HTML5 Canvas and it's a comprehensive guide on the 2D drawing technology that's now baked into all the major browsers. Writing a book is a great experience but I don't think I'll be doing it again in a hurry.
+        </p>
+        <p>
+
+        Another big event that happened this year is that I graduated with a First in my Interactive Media Production degree at Bournemouth University. The past three years of my life coming to a close has been a very weird feeling, but fortunately I already had a job lined up for after university which helped me move into the "real" world. It's that job which has been the biggest thing that has happened to me this year – somehow I managed to find myself working for Mozilla! I'm really chuffed about that and, although I've only been here two months, I'm itching to do some awesome stuff.
+        </p>
+        <p>
+
+        Aside from all of those events I've been working on two interesting projects, both related to my final year at university. One of them is the analysis of sentiment through Twitter, which ended up providing some really interesting results (who knew people liked kissing on a balcony so much?). The other is Rawkets, my HTML5 and WebSockets multiplayer space-shooter game.
+        </p>
+    </div>
+    <div class="none" id="interview2">
+        <p>
+        .net: What have you been working on this year?
+        </p>
+        <p>
+        JH: This summer I worked at a design agency called Mediashaker in Edmonton, AB. I’m also setting aside time to do freelancing, as well as start a personal project specifically for web design students. My proudest moment this year has been to be named on the list of "50 Awesome Portfolios from Female Designers and Illustrators".
+        </p>
+        <a href="#interview" class="modal-overlay" data-title="Simon was here">Nested overlay to something else</a>
+    </div>
+
+    <div id="footerTest" class="none">This is a cool footer that has come from an element. <br />socks!</div>
+    <div id="headerTest" class="none">I can haz some headers</div>
+
+</body>
+
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js'></script>
+<script type="text/javascript" src="../Source/js/Modal.js"></script>
+<script type="text/javascript" src="Demo.js"></script>
+
+</html>

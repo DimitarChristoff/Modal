@@ -1,0 +1,384 @@
+/* =============================================================================
+   HTML5 element display
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio[controls], canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
+ *    http://clagnut.com/blog/348/#c790
+ * 2. Force vertical scrollbar in non-IE
+ * 3. Remove Android and iOS tap highlight color to prevent entire container being highlighted
+ *    www.yuiblog.com/blog/2010/10/01/quick-tip-customizing-the-mobile-safari-tap-highlight-color/
+ * 4. Prevent iOS text size adjust on device orientation change, without disabling user zoom
+ *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ */
+
+html { font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body { margin: 0; font-size: 13px; line-height: 1.231; }
+
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+/*
+ * These selection declarations have to be separate
+ * No text-shadow: twitter.com/miketaylr/status/12228805301
+ * Also: hot pink!
+ */
+
+::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+a { color: #00e; }
+a:visited { color: #551a8b; }
+a:focus { outline: thin dotted; }
+
+/* Improve readability when focused and hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: 0; }
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+abbr[title] { border-bottom: 1px dotted; }
+
+b, strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+dfn { font-style: italic; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+/* Redeclare monospace font family: en.wikipedia.org/wiki/User:Davidgothberg/Test59 */
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+
+/* Improve readability of pre-formatted text in all browsers */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+
+small { font-size: 85%; }
+
+/* Position subscript and superscript content without affecting line-height: gist.github.com/413930 */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * Improve image quality when scaled in IE7
+ * code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ */
+
+img { border: 0; -ms-interpolation-mode: bicubic; }
+
+/*
+ * Correct overflow displayed oddly in IE9
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+figure { margin: 0; }
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+
+/*
+ * 1. Correct color not inheriting in IE6/7/8/9
+ * 2. Correct alignment displayed oddly in IE6/7
+ */
+
+legend { border: 0; *margin-left: -7px; padding: 0; }
+
+/* Indicate that 'label' will shift focus to the associated form element */
+label { cursor: pointer; }
+
+/*
+ * 1. Correct font-size not inheriting in all browsers
+ * 2. Remove margins in FF3/4 S5 Chrome
+ * 3. Define consistent vertical alignment display in all browsers
+ */
+
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+
+/*
+ * 1. Define line-height as normal to match FF3/4 (set using !important in the UA stylesheet)
+ * 2. Correct inner spacing displayed oddly in IE6/7
+ */
+
+button, input { line-height: normal; *overflow: visible; }
+
+/*
+ * 1. Display hand cursor for clickable form elements
+ * 2. Allow styling of clickable form elements in iOS
+ */
+
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+
+/*
+ * Consistent box sizing and appearance
+ */
+
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+
+/*
+ * Remove inner padding and border in FF3/4
+ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+ */
+
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+/* Remove default vertical scrollbar in IE6/7/8/9 */
+textarea { overflow: auto; vertical-align: top; }
+
+/* Colors for form validity */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+
+/* =============================================================================
+   Primary styles
+   Author:
+   ========================================================================== */
+
+.none {
+    display: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+html, body {
+    height: 100%;
+    font-family: arial;
+    font-size: 14px;
+}
+
+body {
+    font-size: 14px;
+}
+
+.modal {
+    z-index: 1000000;
+}
+
+.overlay {
+    background-repeat: repeat;
+    background-scroll: scroll;
+    background-position: 0 0;
+    background-color: transparent;
+    background-image: -moz-radial-gradient(circle , #FFFFFF, #291A49);
+    background-image: -webkit-radial-gradient(circle , #FFFFFF, #291A49);
+    background-image: -ms-radial-gradient(circle , #FFFFFF, #291A49);
+    background-image: -o-radial-gradient(circle , #FFFFFF, #291A49);
+}
+
+.modal-box {
+    width: 70%;
+    max-width: 700px;
+    min-width: 350px;
+    border: 1px solid;
+    border-color: #afafaf #a0a0a0 #909090;
+    border-radius: 6px;
+}
+
+span.modal-close {
+    position: absolute;
+    z-index: 1000001;
+    right: 6px;
+    top: 6px;
+    background: url(../images/gtk-close.png) no-repeat right center;
+    height: 20px;
+    padding-right: 30px;
+    padding-top: 4px;
+    color: #333;
+    font-size: 13px;
+    cursor: pointer;
+}
+.simple-modal .modal-box {
+    overflow: auto;
+}
+
+
+.modal-content {
+    background:  #fff;
+}
+    .modal-header, .modal-footer {
+        background-color: #fff;
+        padding: 10px;
+        text-shadow: 0 1px 0 #fff;
+    }
+
+        .modal-header {
+            border-radius: 6px 6px 0 0;
+            height: 23px;
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 1px 1px 1px rgba(255,255,255,.8);
+            border-bottom: 1px solid #fff;
+            background: #fff
+        }
+
+        .modal-header:hover {
+            background-color: #f5f5f5;
+        }
+
+        .modal-footer {
+            border-radius: 0 0 6px 6px;
+            background-color: #f5f5f5;
+            min-height: 2px;
+            border-top: 1px solid #fff;
+        }
+
+    .modal-body {
+        background: #fff;
+        padding: 6px;
+        border-bottom: 1px solid #F5F5F5;
+        border-top: 1px solid #F5F5F5;
+    }
+
+
+    .simple-modal .modal-box {
+        overflow: auto;
+    }
+
+    .simple-modal .modal-content {
+        max-height: none !important;
+    }
+
+    .simple-modal .modal-body {
+        overflow: hidden;
+    }
+
+.modal p {
+    margin:  0;
+    margin-bottom: 12px;
+}
+
+
+.boxShadow {
+    -moz-box-shadow: 0px 0px 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,.3);
+    -ms-box-shadow: 0px 0px 3px rgba(0,0,0,.3);
+    box-shadow: 0px 0px 3px rgba(0,0,0,.3);
+    -o-box-shadow: 0px 0px 3px rgba(0,0,0,.3);
+}
+
+button {
+    border: 1px solid transparent;
+    padding:4px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-right: 6px;
+    color: #fff;
+    border-radius: 3px 3px 3px 3px;
+    -ms-border-radius: 3px 3px 3px 3px;
+    -o-border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    background: #444;
+    -webkit-background-clip: padding-box;
+    cursor: pointer;
+    _cursor: hand;
+}
+
+.main {
+    margin:  20px;
+}
+
+
+
+
+
+
+
+
+
+
+/* =============================================================================
+   Non-semantic helper classes
+   Please define your styles before this section.
+   ========================================================================== */
+
+/* For image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+/* Hide for both screenreaders and browsers:
+   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: by Jon Neal.
+  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638 */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
