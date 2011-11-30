@@ -408,15 +408,15 @@ COMMON.Modal.bootStrap = new Class({
                     url: val,
                     onRequest: function() {
                         // spinner or text, whatever.
-                        self.setBody(self.options.loadingContent);
-                        self.show(options);
+                        // self.setBody(self.options.loadingContent);
+                        // self.show(options);
                     },
                     onSuccess: function() {
                         // set the body
-                        self.setBody(this.response.text);
+                        self.setBody(this.response.text).show(options);
                     },
                     onFailure: function() {
-                        self.setBody("Contents did not load. Close and try again");
+                        self.setBody("Contents did not load. Close and try again").show(options);
                     }
                 }).send();
                 break;
