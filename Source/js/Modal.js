@@ -27,6 +27,9 @@ provides: COMMON.Overlay, COMMON.Modal, COMMON.Modal.bootstrap
 // setup a namespace
 this.COMMON = this.COMMON || {};
 
+//detect css3 transition support via modernizr if needed
+this.Modernizr = this.Modernizr || function(a,b,c){function z(a,b){var c=a.charAt(0).toUpperCase()+a.substr(1),d=(a+" "+m.join(c+" ")+c).split(" ");return y(d,b)}function y(a,b){for(var d in a)if(j[a[d]]!==c)return b=="pfx"?a[d]:!0;return!1}function x(a,b){return!!~(""+a).indexOf(b)}function w(a,b){return typeof a===b}function v(a,b){return u(prefixes.join(a+";")+(b||""))}function u(a){j.cssText=a}var d="2.0.6",e={},f=b.documentElement,g=b.head||b.getElementsByTagName("head")[0],h="modernizr",i=b.createElement(h),j=i.style,k,l=Object.prototype.toString,m="Webkit Moz O ms Khtml".split(" "),n={},o={},p={},q=[],r,s={}.hasOwnProperty,t;!w(s,c)&&!w(s.call,c)?t=function(a,b){return s.call(a,b)}:t=function(a,b){return b in a&&w(a.constructor.prototype[b],c)},n.csstransitions=function(){return z("transitionProperty")};for(var A in n)t(n,A)&&(r=A.toLowerCase(),e[r]=n[A](),q.push((e[r]?"":"no-")+r));u(""),i=k=null,e._version=d,e._domPrefixes=m,e.testProp=function(a){return y([a])},e.testAllProps=z;return e}(this,this.document);
+
 Element.implement({
     diffuse: function(position){
         return this.setStyles({
@@ -101,6 +104,8 @@ var Modal = this.COMMON.Modal = new Class({
         header: "",
         body: "",
         footer: "",
+        transitionClass: "transition",
+        transitionShowClass: "modalVisible",
         fx: {
             duration: 300,
             properties: {
@@ -150,7 +155,14 @@ var Modal = this.COMMON.Modal = new Class({
 
         // save references
         this.element = proxy.getFirst().store('modal', this).inject(this.container);
-        this.box = this.element.getElement('div.modal-box').set('morph', this.options.fx).setStyle('opacity', 0);
+        this.box = this.element.getElement('div.modal-box').set('morph', this.options.fx).setStyles({
+            'opacity': 0,
+            'marginTop': 30
+        });
+
+        if (Modernizr.csstransitions)
+            this.box.addClass(this.options.transitionClass);
+
         this.content = this.box.getElement('div.modal-content');
         this.body = this.content.getFirst();
         this.footer = this.content.getNext();
@@ -222,7 +234,13 @@ var Modal = this.COMMON.Modal = new Class({
         options = Object.merge({}, this.options, options || {});
         if (options.overlay)
             this.overlay.show();
-        this.box.setStyle('left', '100%').morph(options.fx.properties.show);
+
+        if (Modernizr.csstransitions) {
+            this.box.addClass(this.options.transitionShowClass);
+        }
+        else {
+            this.box.setStyle('left', '100%').morph(options.fx.properties.show);
+        }
         this.isShown = true;
         this.fireEvent('show');
         this.box.store("options", options);
@@ -230,7 +248,12 @@ var Modal = this.COMMON.Modal = new Class({
     },
 
     hide: function(){
-        this.box.morph(this.options.fx.properties.hide).get('morph').chain(function(){ this.element.setStyle('left', 0) });
+        if (Modernizr.csstransitions) {
+            this.box.removeClass(this.options.transitionShowClass);
+        }
+        else {
+            this.box.morph(this.options.fx.properties.hide).get('morph').chain(function(){ this.element.setStyle('left', 0) });
+        }
         this.isShown = false;
         this.fireEvent('hide');
         if (this.options.overlay)
@@ -381,7 +404,7 @@ COMMON.Modal.bootStrap = new Class({
                     var button = new Element("button", {
                         "class": obj.className,
                         html: obj.text
-                    }).inject(holder);
+                    }).inject(holder).addClass(self.options.transitionClass);
 
                     if (obj.event) {
                         button.addEvent("click", function(event) {
