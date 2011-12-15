@@ -328,9 +328,11 @@ span.modal-close {
 .modal button {
     background-color: #CFDAE7;
     border: 1px solid transparent;
-    padding: 5px;
+    padding: 4px;
+    padding-bottom: 0;
     font-weight: bold;
     font-size: 14px;
+    height: 27px;
     line-height: 14px;
     text-transform: uppercase;
     margin-right: 6px;
