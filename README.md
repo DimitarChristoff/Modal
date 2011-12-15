@@ -19,18 +19,19 @@ Download and check the `Demo/index.html`.
 Opening a modal can be as simple as adding this:
 
 ```javascript
-new Modal.BootStrap(document.body);
+    new Modal.BootStrap(document.body);
 ```
 
-`<a href="#simonSays" class="modal-overlay" data-title="Simon was here">Load contents of id=simonSays into a modal</a>`
+```HTML
+    <a href="#simonSays" class="modal-overlay" data-title="Simon was here">Load contents of id=simonSays into a modal</a>`
 
 Of course, you can open a modal window by pure javascript without the BootStrap:
 
 ```javascript
-new Modal.Base(document.body, {
-    header: "Hi",
-    body: "loading something"
-});
+    new Modal.Base(document.body, {
+        header: "Hi",
+        body: "loading something"
+    });
 ```
 
 Example
