@@ -42,12 +42,12 @@ Example
 Public methods and options of Modal.Base
 ----------------------------------------
 
-- `.show(options)` shows the current modal window whereby options can override the instance options
-- `.hide(options)` hides the current modal window whereby options can override the instance options
-- `.toggle()` shows / hides the current modal window
-- `.setTitle(title)` sets/updates the contents of the title of the modal window
-- `.setBody(body)` sets/updates the contents of the body of the modal window
-- `.setFooter(footer)` sets the contents of the footer of the modal window
+- `.show(options)` - shows the current modal window whereby options can override the instance options
+- `.hide(options)` - hides the current modal window whereby options can override the instance options
+- `.toggle()` - shows / hides the current modal window
+- `.setTitle(title)` - sets/updates the contents of the title of the modal window
+- `.setBody(body)` - sets/updates the contents of the body of the modal window
+- `.setFooter(footer)` - sets the contents of the footer of the modal window
 
 Keep in mind it will prefer CSS3 transitions, if they are available - instead of Fx.Morph (as fallback).
 
@@ -56,9 +56,9 @@ Check the Modal.js for all options, they are mostly self-explanatory.
 Events in Modal.Base
 --------------------
 
-`onReady` - fires when instance is created
-`onShow` - fires when modal is shown
-`onHide` - firs when modal is hidden
+- `onReady` - fires when a new instance is created
+- `onShow` - fires when modal is shown
+- `onHide` - firs when modal is hidden
 
 Data properties and options for Modal.BootStrap
 -----------------------------------------------
@@ -74,5 +74,6 @@ These are the properties on the trigger elements it can read:
 - 'data-esc-close' - true|false to bind ESC to close the modal
 
 From the Options object:
+
 `modalLinks: "a.modal-overlay"` - tells it to attach to all A links with class "modal-overlay"
 
