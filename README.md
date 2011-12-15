@@ -42,12 +42,12 @@ Example
 Public methods and options of Modal.Base
 ----------------------------------------
 
-`.show(options)` shows the current modal window whereby options can override the instance options
-`.hide(options)` hides the current modal window whereby options can override the instance options
-`.toggle()` shows / hides the current modal window
-`.setTitle(title)` sets/updates the contents of the title of the modal window
-`.setBody(body)` sets/updates the contents of the body of the modal window
-`.setFooter(footer)` sets the contents of the footer of the modal window
+- `.show(options)` shows the current modal window whereby options can override the instance options
+- `.hide(options)` hides the current modal window whereby options can override the instance options
+- `.toggle()` shows / hides the current modal window
+- `.setTitle(title)` sets/updates the contents of the title of the modal window
+- `.setBody(body)` sets/updates the contents of the body of the modal window
+- `.setFooter(footer)` sets the contents of the footer of the modal window
 
 Keep in mind it will prefer CSS3 transitions, if they are available - instead of Fx.Morph (as fallback).
 
