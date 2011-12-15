@@ -1,7 +1,7 @@
 /*
 ---
 
-name: Modal.bootStrap
+name: Modal.BootStrap
 
 description: provides a dom boostrap for modal content
 
@@ -18,14 +18,14 @@ requires:
   - Core/Array
   - Core/Class
 
-provides: COMMON.Overlay, COMMON.Modal, COMMON.Modal.bootstrap, Modernizr
+provides: Modal.Overlay, Modal.Base, Modal.BootStrap, Modernizr
 
 ...
 */
 (function() {
 
 // setup a namespace
-this.COMMON = this.COMMON || {};
+var Modal = this.Modal = {};
 
 //detect css3 transition support via modernizr if needed
 var Modernizr = this.Modernizr || function(a,b,c){function z(a,b){var c=a.charAt(0).toUpperCase()+a.substr(1),d=(a+" "+m.join(c+" ")+c).split(" ");return y(d,b)}function y(a,b){for(var d in a)if(j[a[d]]!==c)return b=="pfx"?a[d]:!0;return!1}function x(a,b){return!!~(""+a).indexOf(b)}function w(a,b){return typeof a===b}function v(a,b){return u(prefixes.join(a+";")+(b||""))}function u(a){j.cssText=a}var d="2.0.6",e={},f=b.documentElement,g=b.head||b.getElementsByTagName("head")[0],h="modernizr",i=b.createElement(h),j=i.style,k,l=Object.prototype.toString,m="Webkit Moz O ms Khtml".split(" "),n={},o={},p={},q=[],r,s={}.hasOwnProperty,t;!w(s,c)&&!w(s.call,c)?t=function(a,b){return s.call(a,b)}:t=function(a,b){return b in a&&w(a.constructor.prototype[b],c)},n.csstransitions=function(){return z("transitionProperty")};for(var A in n)t(n,A)&&(r=A.toLowerCase(),e[r]=n[A](),q.push((e[r]?"":"no-")+r));u(""),i=k=null,e._version=d,e._domPrefixes=m,e.testProp=function(a){return y([a])},e.testAllProps=z;return e}(this,this.document);
@@ -47,7 +47,7 @@ Element.implement({
     }
 });
 
-var Overlay = this.COMMON.Overlay = new Class({
+Modal.Overlay = new Class({
 
     Implements: [Events, Chain, Options],
 
@@ -93,7 +93,7 @@ var Overlay = this.COMMON.Overlay = new Class({
 
 });
 
-var Modal = this.COMMON.Modal = new Class({
+Modal.Base = new Class({
 
     Implements: [Events, Chain, Options],
 
@@ -177,7 +177,7 @@ var Modal = this.COMMON.Modal = new Class({
         this.setId(this.options.id);
 
         // use overlay?
-        this.overlay = (this.options.overlay) ? new Overlay(this.container, {
+        this.overlay = (this.options.overlay) ? new Modal.Overlay(this.container, {
             fx: this.options.overlayFx,
             onOverlayClick: this.overlayClick.bind(this)
         }) : false;
@@ -316,12 +316,12 @@ var Modal = this.COMMON.Modal = new Class({
 
 });
 
-COMMON.Modal.bootStrap = new Class({
+Modal.BootStrap = new Class({
     /*
         this class will add dom bootstrap func for modal use w/o specific javascript func / calls by virtue of data-elements
     */
 
-    Extends: Modal,
+    Extends: Modal.Base,
 
     options: {
         modalLinks: "a.modal-overlay",

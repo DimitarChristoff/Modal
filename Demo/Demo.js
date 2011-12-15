@@ -1,6 +1,6 @@
 window.addEvent("domready", function() {
 
-new COMMON.Modal.bootStrap(document.body, {
+new Modal.BootStrap(document.body, {
     onConfirm: function() {
         this.hide();
         alert("you rocked!");
