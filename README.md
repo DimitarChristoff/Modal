@@ -24,6 +24,7 @@ Opening a modal can be as simple as adding this:
 
 ```HTML
     <a href="#simonSays" class="modal-overlay" data-title="Simon was here">Load contents of id=simonSays into a modal</a>`
+```
 
 Of course, you can open a modal window by pure javascript without the BootStrap:
 
