@@ -189,6 +189,7 @@ Modal.Base = new Class({
 
         // close methods...
         this.attachEvents();
+        this.fireEvent("ready");
     },
 
     overlayClick: function(e) {
