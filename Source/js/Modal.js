@@ -343,6 +343,8 @@ Modal.BootStrap = new Class({
     initialize: function(container, options) {
         this.setOptions(options);
         this.parent(container, this.options);
+        if (!this.container)
+            return;
         this.attachBootstrap();
     },
 
