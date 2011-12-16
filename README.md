@@ -1,6 +1,8 @@
 Modal BootStrap
 ===============
 
+![Screenshot](http://fragged.org/img/modal-bootstrap-logo.png)
+
 A MooTools 1.4+ plugin that allows easy modal window use through HTML5 Boot-Strapping via data- properties on elements.
 Provides:
 
