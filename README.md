@@ -11,6 +11,8 @@ Provides:
   - Modal.BootStrap
   - Modernizr (adds csstransitions detection ONLY if not already loaded) (+1k)
 
+Screenshot
+----------
 ![Screenshot 1](http://fragged.org/img/Modal.BootStrap.png)
 
 How to use
