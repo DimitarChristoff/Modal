@@ -53,10 +53,12 @@ body {
 }
 
 .modal-box-initial {
-    margin-top: 30px !important
+    margin-top: 30px !important;
+    display: none;
 }
 
 .modal-visible {
+    display: block;
     opacity: 1 !important;
     margin-top: 0 !important;
 }

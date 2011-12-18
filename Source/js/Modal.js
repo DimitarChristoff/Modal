@@ -32,6 +32,7 @@ var Modernizr = this.Modernizr || function(a,b,c){function z(a,b){var c=a.charAt
 
 // provides:
 // Modernizr.csstransitions = false;
+Element.NativeEvents.transitionend = 2;
 
 Element.implement({
     diffuse: function(position){
@@ -343,8 +344,6 @@ Modal.BootStrap = new Class({
     initialize: function(container, options) {
         this.setOptions(options);
         this.parent(container, this.options);
-        if (!this.container)
-            return;
         this.attachBootstrap();
     },
 
