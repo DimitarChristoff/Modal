@@ -113,7 +113,7 @@ Modal.Base = new Class({
 		transitionClassBox: "modal-box-initial",
         transitionShowClass: "modal-visible",
         fx: {
-            duration: 300,
+            duration: 400,
             properties: {
                 show: {
                     opacity: [0,1],
@@ -243,6 +243,8 @@ Modal.Base = new Class({
         if (options.overlay)
             this.overlay.show();
 
+        this.box.setStyle("visibility", "visible");
+
         if (this.options.useTransitions) {
             this.box.addClass(this.options.transitionShowClass);
         }
@@ -256,12 +258,22 @@ Modal.Base = new Class({
     },
 
     hide: function(){
+        var self = this;
+
+        var completeCallback = function() {
+            clearTimeout(self.hideTimer);
+            self.box.setStyle("visibility", "hidden").removeEvents("transitionend");
+        };
+
         if (this.options.useTransitions) {
+            this.box.addEvent("transitionend", completeCallback);
             this.box.removeClass(this.options.transitionShowClass);
         }
         else {
             this.box.morph(this.options.fx.properties.hide);
         }
+        this.hideTimer = completeCallback.delay(this.options.fx.duration);
+
         this.isShown = false;
         this.fireEvent('hide');
         if (this.options.overlay)

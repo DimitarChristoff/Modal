@@ -50,15 +50,14 @@ body {
     margin-top: 30px;
     opacity: 0;
     left: 100%;
+    visibility: hidden;
 }
 
 .modal-box-initial {
-    margin-top: 30px !important;
-    display: none;
+    margin-top: 30px !important
 }
 
 .modal-visible {
-    display: block;
     opacity: 1 !important;
     margin-top: 0 !important;
 }
@@ -176,11 +175,11 @@ span.modal-close {
 }
 
 .transition {
-    -webkit-transition: all 0.3s ease-out 0s;
-    -moz-transition: all 0.3s ease-out 0s;
-    -ms-transition: all 0.3s ease-out 0s;
-    -o-transition: all 0.3s ease-out 0s;
-    transition: all 0.3s ease-out 0s;
+    -webkit-transition: all 0.4s ease-out 0s;
+    -moz-transition: all 0.4s ease-out 0s;
+    -ms-transition: all 0.4s ease-out 0s;
+    -o-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
 }
 
 .main {
