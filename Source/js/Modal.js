@@ -9,7 +9,7 @@ authors: Daniel Buchner, Dimitar Christoff, Simon Smith
 
 license: MIT-style license.
 
-version: 1.02
+version: 1.03
 
 requires:
   - Core/String
