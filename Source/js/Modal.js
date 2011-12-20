@@ -173,6 +173,8 @@ Modal.Base = new Class({
         this.content = this.box.getElement('div.modal-content');
         this.body = this.content.getFirst();
         this.footer = this.content.getNext();
+        this.header = this.content.getPrevious();
+        this.closeButton = this.header.getElement("span.modal-close");
 
         // modal instance id for toggling...
         this.setId(this.options.id);
@@ -493,5 +495,6 @@ Modal.BootStrap = new Class({
         return prop;
     }.protect()
 }); // end class
+
 
 })();
