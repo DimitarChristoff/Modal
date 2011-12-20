@@ -204,10 +204,11 @@ Modal.Base = new Class({
         }
     },
 
-    escapePress: function(e) {
+   escapePress: function(e) {
         // handle press of ESC to close if allowed
         if (e && e.key) {
-            if (e.key === 'esc' && this.box.retrieve("options").escClose) {
+            var opts = this.box.retrieve("options") || this.options;
+            if (e.key === 'esc' && opts.escClose) {
                 this.hide();
             }
         }
