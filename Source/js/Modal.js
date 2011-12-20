@@ -479,6 +479,17 @@ Modal.BootStrap = new Class({
             if (target)
                 return target.get("html");
         }
+
+        // is it an image?
+        var parts = prop.split(".");
+        if (parts.length) {
+            var extenstion = parts.getLast().toLowerCase();
+
+            if (['jpg','png','jpeg','gif'].contains(extenstion))
+                return ["<img src='", prop, "' />"].join("")
+        }
+
+
         return prop;
     }.protect()
 }); // end class

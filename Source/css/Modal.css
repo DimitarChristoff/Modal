@@ -41,9 +41,9 @@ body {
 }
 
 .modal-box {
+    min-width: 250px;
     width: 70%;
-    max-width: 700px;
-    min-width: 350px;
+    max-width: 750px;
     border: 1px solid;
     border-color: #afafaf #a0a0a0 #909090;
     border-radius: 6px;
