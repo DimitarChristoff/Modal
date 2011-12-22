@@ -23,26 +23,33 @@ Download and check the `Demo/index.html`.
 Opening a modal can be as simple as adding this:
 
 ```javascript
+
     new Modal.BootStrap(document.body);
+
 ```
 
 ```HTML
+
     <a href="#simonSays" class="modal-overlay" data-title="Simon was here">Load contents of id=simonSays into a modal</a>`
+
 ```
 
 Of course, you can open a modal window by pure javascript without the BootStrap:
 
 ```javascript
+
     new Modal.Base(document.body, {
         header: "Hi",
         body: "loading something"
     });
+
 ```
 
 Example
 -------
 
 [http://jsfiddle.net/dimitar/GGAa5/](http://jsfiddle.net/dimitar/GGAa5/)
+[The official Demo page as per package](http://www.fragged.org/dev/Modal/Demo/)
 
 
 Public methods and options of Modal.Base
@@ -81,5 +88,10 @@ These are the properties on the trigger elements it can read:
 
 From the Options object:
 
-`modalLinks: "a.modal-overlay"` - tells it to attach to all A links with class "modal-overlay"
+- `modalLinks: "a.modal-overlay"` - tells it to attach to all A links with class "modal-overlay"
 
+Since 1.04, Modal.BootStrap now supports hashtag URI to target a particular modal you have link behavior for.
+
+- `autoOpenByHash: true` - makes it automatically try to open a link handler for a given element, for example:
+
+`example.com/signup#tnc` will automatically try to find `a.modal-overlay[href=#tnc]` and `click` it to open it.
