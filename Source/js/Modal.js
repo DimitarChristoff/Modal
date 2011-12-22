@@ -362,6 +362,7 @@ Modal.BootStrap = new Class({
         this.parent(container, this.options);
         this.attachBootstrap();
         this.options.autoOpenByHash && this.applyHash();
+        this.fireEvent("ready");
     },
 
     attachBootstrap: function(mask) {
