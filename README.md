@@ -18,7 +18,7 @@ Screenshot
 How to use
 ----------
 
-Download and check the `Demo/index.html`.
+Download and check the [`Demo/index.html`](http://www.fragged.org/dev/Modal/Demo/)
 
 Opening a modal can be as simple as adding this:
 
@@ -45,11 +45,10 @@ Of course, you can open a modal window by pure javascript without the BootStrap:
 
 ```
 
-Example
--------
+Examples
+--------
 
-[http://jsfiddle.net/dimitar/GGAa5/](http://jsfiddle.net/dimitar/GGAa5/)
-[The official Demo page as per package](http://www.fragged.org/dev/Modal/Demo/)
+[http://jsfiddle.net/dimitar/GGAa5/](http://jsfiddle.net/dimitar/GGAa5/) or [The official Demo page as per package](http://www.fragged.org/dev/Modal/Demo/)
 
 
 Public methods and options of Modal.Base
