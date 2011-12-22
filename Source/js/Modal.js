@@ -9,7 +9,7 @@ authors: Daniel Buchner, Dimitar Christoff, Simon Smith
 
 license: MIT-style license.
 
-version: 1.03
+version: 1.04
 
 requires:
   - Core/String
@@ -204,7 +204,7 @@ Modal.Base = new Class({
         }
     },
 
-   escapePress: function(e) {
+    escapePress: function(e) {
         // handle press of ESC to close if allowed
         if (e && e.key) {
             var opts = this.box.retrieve("options") || this.options;
@@ -344,6 +344,7 @@ Modal.BootStrap = new Class({
         modalLinks: "a.modal-overlay",
         buttonsZen: "div.clearfix.modal-buttons",
         loadingContent: "loading...",
+        autoOpenByHash: true,
         props: {
             href: "href",
             modalType: "data-type",
@@ -360,6 +361,7 @@ Modal.BootStrap = new Class({
         this.setOptions(options);
         this.parent(container, this.options);
         this.attachBootstrap();
+        this.options.autoOpenByHash && this.applyHash();
     },
 
     attachBootstrap: function(mask) {
@@ -413,7 +415,7 @@ Modal.BootStrap = new Class({
         this.setId(el.uid);
 
         // set the title of the modal
-        this.setTitle(this.getData(props.modalTitle, el));
+        this.setTitle(this.getData(props.modalTitle));
 
         // have we got modal buttons behaviour attached by data
         if (props.modalButtons) {
@@ -442,7 +444,7 @@ Modal.BootStrap = new Class({
         }
         else {
             // else, look for a normal footer prop
-            this.setFooter(this.getData(props.modalFooter, el));
+            this.setFooter(this.getData(props.modalFooter));
         }
 
         // what content to get, element or ajax are suported for now.
@@ -468,19 +470,31 @@ Modal.BootStrap = new Class({
                 break;
             default:
                 // get data from the href property as element directly
-                this.setBody(this.getData(val, el));
+                this.setBody(this.getData(val, true));
                 this.show(options);
             break;
         }
     },
 
-    getData: function(prop, el) {
+    hide: function() {
+        this.parent();
+        if (this.savedHash === location.hash) {
+            this.savedHash = false;
+            history.back();
+        }
+    },
+
+    getData: function(prop, hashChange) {
         // internal that converts a property into data (html) or returns property itself.
         var words = prop.split(/\s/);
         if (words.length === 1) {
             var target = document.id(words[0].replace('#', ''));
-            if (target)
+            if (target) {
+                if (hashChange) {
+                    this.savedHash = location.hash = words[0];
+                }
                 return target.get("html");
+            }
         }
 
         // is it an image?
@@ -494,7 +508,22 @@ Modal.BootStrap = new Class({
 
 
         return prop;
-    }.protect()
+    }.protect(),
+
+    applyHash: function() {
+        // try to open a link to an id managed by an event handler automatically
+        var hash = window.location.hash;
+        if (!hash)
+            return;
+
+        var trigger = document.getElement([this.options.modalLinks, "[href=", hash, "]"].join(""));
+        if (trigger) {
+            this.container.fireEvent("click", {
+                target: trigger
+            });
+        }
+    }
+
 }); // end class
 
 
