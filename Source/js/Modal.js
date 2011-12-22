@@ -478,7 +478,7 @@ Modal.BootStrap = new Class({
 
     hide: function() {
         this.parent();
-        if (this.savedHash === location.hash) {
+        if (this.savedHash && this.savedHash === location.hash) {
             this.savedHash = false;
             history.back();
         }
@@ -490,7 +490,7 @@ Modal.BootStrap = new Class({
         if (words.length === 1) {
             var target = document.id(words[0].replace('#', ''));
             if (target) {
-                if (hashChange) {
+                if (hashChange && location.hash != words[0]) {
                     this.savedHash = location.hash = words[0];
                 }
                 return target.get("html");
