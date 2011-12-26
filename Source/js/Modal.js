@@ -242,7 +242,7 @@ Modal.Base = new Class({
     },
 
     show: function(options){
-        options = Object.merge({}, this.options, options || {});
+        options = Object.merge(this.options, options || {});
         if (options.overlay)
             this.overlay.show();
 
@@ -255,8 +255,9 @@ Modal.Base = new Class({
             this.box.morph(options.fx.properties.show);
         }
         this.isShown = true;
-        this.fireEvent('show');
         this.box.store("options", options);
+        this.fireEvent('show');
+
         return this;
     },
 
@@ -278,9 +279,11 @@ Modal.Base = new Class({
         this.hideTimer = completeCallback.delay(this.options.fx.duration);
 
         this.isShown = false;
-        this.fireEvent('hide');
         if (this.options.overlay)
             this.overlay.hide();
+
+        this.fireEvent('hide');
+
         return this;
     },
 
