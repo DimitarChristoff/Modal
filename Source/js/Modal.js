@@ -9,7 +9,7 @@ authors: Daniel Buchner, Dimitar Christoff, Simon Smith
 
 license: MIT-style license.
 
-version: 1.04
+version: 1.05
 
 requires:
   - Core/String
@@ -353,7 +353,9 @@ Modal.BootStrap = new Class({
             modalFooter: "data-footer",
             modalOverlay: "data-overlay",
             modalEasyClose: "data-any-close",
-            modalEscClose: "data-esc-close"
+            modalEscClose: "data-esc-close",
+            modalOpenEvent: "data-event-open",
+            modalCloseEvent: "data-event-close"
         }
     },
 
@@ -409,6 +411,24 @@ Modal.BootStrap = new Class({
         if (this.getId() == el.uid && this.isShown) {
             this.hide();
             return;
+        }
+
+        // custom events
+        if (this.boundOpenEvent)
+            this.removeEvent("show", this.boundOpenEvent);
+        if (this.boundCloseEvent)
+            this.removeEvent("hide", this.boundCloseEvent);
+
+        if (props.modalOpenEvent) {
+            // open
+            this.boundOpenEvent = this.boundOpenEvent || this.fireEvent.bind(this, props.modalOpenEvent);
+            this.addEvent("show", this.boundOpenEvent);
+        }
+
+        if (props.modalCloseEvent) {
+            // close
+            this.boundCloseEvent = this.boundCloseEvent || this.fireEvent.bind(this, props.modalCloseEvent);
+            this.addEvent("hide", this.boundCloseEvent);
         }
 
         // set an ID so that it knows the trigger element (for toggle)
