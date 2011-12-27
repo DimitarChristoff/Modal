@@ -352,6 +352,7 @@ Modal.BootStrap = new Class({
             href: "href",
             modalType: "data-type",
             modalTitle: "data-title",
+            modalBody: "data-body",
             modalButtons: "data-buttons",
             modalFooter: "data-footer",
             modalOverlay: "data-overlay",
@@ -472,7 +473,7 @@ Modal.BootStrap = new Class({
         }
 
         // what content to get, element or ajax are suported for now.
-        var val = props.href;
+        var val = props.modalBody || props.href;
         switch (props.modalType) {
             case "ajax":
                 new Request({
@@ -494,7 +495,7 @@ Modal.BootStrap = new Class({
                 break;
             default:
                 // get data from the href property as element directly
-                this.setBody(this.getData(val, true));
+                this.setBody(this.getData(val, !!props.href));
                 this.show(options);
             break;
         }
@@ -540,7 +541,7 @@ Modal.BootStrap = new Class({
         if (!hash)
             return;
 
-        var trigger = document.getElement([this.options.modalLinks, "[href=", hash, "]"].join(""));
+        var trigger = document.getElement([this.options.modalLinks, "[href=", hash, "]"].join("")) || document.getElement([this.options.modalLinks, "[", this.options.modalBody, "=", hash, "]"].join(""));
         if (trigger) {
             this.container.fireEvent("click", {
                 target: trigger
