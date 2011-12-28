@@ -81,6 +81,7 @@ These are the properties on the trigger elements it can read:
 - `data-title` - string or id of element to grab content from
 - `data-buttons` - JSON that adds footer buttons, eg `[{className:'right modal-close','text':'No, thanks','event':'cancel'},{className:'left','text':'Sure!','event':'confirm'}]`,
 - `data-footer` - string or id of element to grab content from
+- `data-body` - optional to use instead of .href so it can be attached to non-anchor elements
 - `data-overlay` - true|false for protecting the screen behind the modal window
 - `data-any-close` - true|false for allowing clicking outside the modal window to close it (when overlay is on)
 - `data-esc-close` - true|false to bind ESC to close the modal
