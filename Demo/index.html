@@ -25,7 +25,7 @@
         </ul>
 
         Example without a link and with data-body property instead on a button:<br />
-        <button class="modal-overlay black transition" data-body="areas" data-title="Please select your area from the list" data-event-open="areaPickerOpen" data-buttons="[{className:'right modal-close','text':'Nevermind, perhaps later...','event':'cancel'}]">Pick your location from a list</button>
+        <button class="modal-overlay black transition" data-body="#areas" data-title="Please select your area from the list" data-event-open="areaPickerOpen" data-buttons="[{className:'right modal-close','text':'Nevermind, perhaps later...','event':'cancel'}]">Pick your location from a list</button>
     </div>
     <div id="lipsum" class="main" style="width: 1000px;">
         <p>
@@ -93,7 +93,21 @@
 
     <div id="footerTest" class="none">This is a cool footer that has come from an element. <br />socks!</div>
     <div id="headerTest" class="none">I can haz some headers</div>
+    <div id="areas" class="none">
+        If your area is not listed, it's unlucky:
+        <select name='yourarea'>
+            <option value="Europe">
+                Europe
+            </option>
+            <option value="America">
+                America
+            </option>
+            <option value="Asia">
+                Asia
+            </option>
 
+        </select>
+    </div>
 </body>
 
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js'></script>

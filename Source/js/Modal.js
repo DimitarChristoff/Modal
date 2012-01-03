@@ -495,7 +495,7 @@ Modal.BootStrap = new Class({
                 break;
             default:
                 // get data from the href property as element directly
-                this.setBody(this.getData(val, !!props.href));
+                this.setBody(this.getData(val, !!props.href || !!props.modalBody));
                 this.show(options);
             break;
         }
@@ -541,7 +541,7 @@ Modal.BootStrap = new Class({
         if (!hash)
             return;
 
-        var trigger = document.getElement([this.options.modalLinks, "[href=", hash, "]"].join("")) || document.getElement([this.options.modalLinks, "[", this.options.modalBody, "=", hash, "]"].join(""));
+        var trigger = document.getElement([this.options.modalLinks, "[href=", hash, "]"].join("")) || document.getElement([this.options.modalLinks, "[", this.options.props.modalBody, "=", hash, "]"].join(""));
         if (trigger) {
             this.container.fireEvent("click", {
                 target: trigger
