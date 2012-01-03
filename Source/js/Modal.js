@@ -344,7 +344,7 @@ Modal.BootStrap = new Class({
     Extends: Modal.Base,
 
     options: {
-        modalLinks: "a.modal-overlay",
+        modalLinks: ".modal-overlay",
         buttonsZen: "div.clearfix.modal-buttons",
         loadingContent: "loading...",
         autoOpenByHash: true,

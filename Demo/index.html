@@ -21,7 +21,11 @@
             <li><a href="ajax.html" class="modal-overlay" data-type="ajax" data-title="Simon was here" data-overlay="false" data-esc-close="true">Grab contents via ajax from href, no overlay, custom title as string, ESC closes</a></li>
 
             <li><a href="http://farm8.static.flickr.com/7007/6543210773_03ed7af4e2.jpg" class="modal-overlay" data-title="Santa's coming to town and he likes to ski!" data-buttons="[{className:'right modal-close','text':'Close'}]" data-esc-close="true">Use as a basic lightbox for an image target (needs CSS tweaks for this to be better)</a></li>
+
         </ul>
+
+        Example without a link and with data-body property instead on a button:<br />
+        <button class="modal-overlay black transition" data-body="areas" data-title="Please select your area from the list" data-event-open="areaPickerOpen" data-buttons="[{className:'right modal-close','text':'Nevermind, perhaps later...','event':'cancel'}]">Pick your location from a list</button>
     </div>
     <div id="lipsum" class="main" style="width: 1000px;">
         <p>
