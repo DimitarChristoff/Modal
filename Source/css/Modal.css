@@ -181,21 +181,6 @@ span.modal-close {
     transition: all 0.4s ease-out 0s;
 }
 
-nav {
-    background-repeat: repeat;
-    background-scroll: scroll;
-    background-position: 0 0;
-    background-color: transparent;
-    padding:  10px;
-    background-image: -moz-radial-gradient(circle, #ccc, #FFFFFF);
-    background-image: -webkit-radial-gradient(circle, #ccc, #FFFFFF);
-    background-image: -ms-radial-gradient(circle, #ccc, #FFFFFF);
-    background-image: -o-radial-gradient(circle,  #ccc, #FFFFFF);
-}
-
-.main {
-    margin:  20px auto auto;
-}
 
 /* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */
 .clearfix:before, .clearfix:after { content: ""; display: table; }

@@ -1,0 +1,16 @@
+/* Demo specific styles, safe to remove. */
+nav {
+    background-repeat: repeat;
+    background-scroll: scroll;
+    background-position: 0 0;
+    background-color: transparent;
+    padding:  10px;
+    background-image: -moz-radial-gradient(circle, #ccc, #FFFFFF);
+    background-image: -webkit-radial-gradient(circle, #ccc, #FFFFFF);
+    background-image: -ms-radial-gradient(circle, #ccc, #FFFFFF);
+    background-image: -o-radial-gradient(circle,  #ccc, #FFFFFF);
+}
+
+.main {
+    margin:  20px auto auto;
+}
