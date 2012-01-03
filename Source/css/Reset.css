@@ -149,7 +149,7 @@ button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: ba
  * 2. Correct inner spacing displayed oddly in IE6/7
  */
 
-button, input { line-height: normal; *overflow: visible; }
+button, input { line-height: normal; *overflow: visible; font-family: Arial }
 
 /*
  * 1. Display hand cursor for clickable form elements

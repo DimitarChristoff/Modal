@@ -153,7 +153,6 @@ span.modal-close {
     font-size: 14px;
     text-transform: uppercase;
     color: #ccc;
-    -webkit-background-clip: padding-box;
     -ms-border-radius: 3px 3px 3px 3px;
     -o-border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
