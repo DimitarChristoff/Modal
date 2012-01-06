@@ -174,7 +174,7 @@ Modal.Base = new Class({
         this.body = this.content.getFirst();
         this.footer = this.content.getNext();
         this.header = this.content.getPrevious();
-        this.closeButton = this.header.getElement("span.modal-close");
+        this.closeButton = this.header.getPrevious();
 
         // modal instance id for toggling...
         this.setId(this.options.id);
