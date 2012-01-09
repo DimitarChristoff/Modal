@@ -51,6 +51,12 @@ Examples
 [http://jsfiddle.net/dimitar/GGAa5/](http://jsfiddle.net/dimitar/GGAa5/) or [The official Demo page as per package](http://www.fragged.org/dev/Modal/Demo/)
 
 
+Changelog
+---------
+
+- 1.06 - added support for **autoWidth** onShow (or any class, for that matter) via a css class and extra data-class option. Fixed occlusion of options by BootStrap instances problem.
+
+
 Public methods and options of Modal.Base
 ----------------------------------------
 
@@ -85,6 +91,7 @@ These are the properties on the trigger elements it can read:
 - `data-overlay` - true|false for protecting the screen behind the modal window
 - `data-any-close` - true|false for allowing clicking outside the modal window to close it (when overlay is on)
 - `data-esc-close` - true|false to bind ESC to close the modal
+- `data-class` - add a class name to `this.box` on show and remove it on hide.
 
 From the Options object:
 
