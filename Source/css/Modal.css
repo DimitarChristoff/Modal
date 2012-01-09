@@ -51,6 +51,14 @@ body {
     opacity: 0;
     left: 100%;
     visibility: hidden;
+    text-align: left;
+}
+
+.autoWidth {
+    text-align: center;
+    width: auto;
+    max-width: none;
+    display: inline-block;
 }
 
 .modal-box-initial {

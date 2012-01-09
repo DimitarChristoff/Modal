@@ -134,8 +134,8 @@ Modal.Base = new Class({
     template: ['<table class="modal" style="position: fixed; top: 0; left: -100%; width: 100%; height: 100%;">',
                 '<tbody style="height: 100%;">',
                     '<tr style="height: 100%;">',
-                        '<td style="vertical-align: middle; height: 100%;">',
-                            '<div class="modal-box boxShadow" style="position: relative; margin: 0 auto;">',
+                        '<td style="vertical-align: middle; height: 100%; text-align: center">',
+                            '<div class="modal-box boxShadow clearfix" style="position: relative; margin: 0 auto;">',
                                 '<span class="modal-close"></span>',
                                 '<div class="modal-header"></div>',
                                 '<div class="modal-content" style="overflow: auto;">',
@@ -175,6 +175,7 @@ Modal.Base = new Class({
         this.footer = this.content.getNext();
         this.header = this.content.getPrevious();
         this.closeButton = this.header.getPrevious();
+        this.wrapper = this.box.getParent();
 
         // modal instance id for toggling...
         this.setId(this.options.id);
@@ -231,7 +232,7 @@ Modal.Base = new Class({
         return this;
     }.protect(),
 
-    getId: function(id) {
+    getId: function() {
         return this.box.retrieve("uid") || this.options.id;
     },
 
@@ -242,7 +243,7 @@ Modal.Base = new Class({
     },
 
     show: function(options){
-        options = Object.merge(this.options, options || {});
+        options = options || this.options;
         if (options.overlay)
             this.overlay.show();
 
@@ -254,6 +255,11 @@ Modal.Base = new Class({
         else {
             this.box.morph(options.fx.properties.show);
         }
+
+        if (this.options.openClass) {
+            this.box.addClass(this.options.openClass);
+        }
+
         this.isShown = true;
         this.box.store("options", options);
         this.fireEvent('show');
@@ -263,6 +269,7 @@ Modal.Base = new Class({
 
     hide: function(){
         var self = this;
+
 
         var completeCallback = function() {
             clearTimeout(self.hideTimer);
@@ -359,9 +366,12 @@ Modal.BootStrap = new Class({
             modalEasyClose: "data-any-close",
             modalEscClose: "data-esc-close",
             modalOpenEvent: "data-event-open",
-            modalCloseEvent: "data-event-close"
+            modalCloseEvent: "data-event-close",
+            modalCustomClass: "data-class"
         }
     },
+
+    handledOptions: {},
 
     initialize: function(container, options) {
         this.setOptions(options);
@@ -436,6 +446,11 @@ Modal.BootStrap = new Class({
             this.addEvent("hide", this.boundCloseEvent);
         }
 
+        if (props.modalCustomClass) {
+            // add and remove class on show/hide, eg, .autoWidth as per demo.
+            options.openClass = props.modalModalClass;
+        }
+
         // set an ID so that it knows the trigger element (for toggle)
         this.setId(el.uid);
 
@@ -472,6 +487,9 @@ Modal.BootStrap = new Class({
             this.setFooter(this.getData(props.modalFooter));
         }
 
+        // save instance options
+        this.handledOptions[this.getId()] = options;
+
         // what content to get, element or ajax are suported for now.
         var val = props.modalBody || props.href;
         switch (props.modalType) {
@@ -486,23 +504,32 @@ Modal.BootStrap = new Class({
                     },
                     onSuccess: function() {
                         // set the body
-                        self.setBody(this.response.text).show(options);
+                        self.setBody(this.response.text).show(options, el);
                     },
                     onFailure: function() {
-                        self.setBody("Contents did not load. Close and try again").show(options);
+                        self.setBody("Contents did not load. Close and try again").show(options, el);
                     }
                 }).send();
                 break;
             default:
                 // get data from the href property as element directly
                 this.setBody(this.getData(val, !!props.href || !!props.modalBody));
-                this.show(options);
+                this.show(options, el);
             break;
         }
     },
 
+    show: function(options) {
+        if (this.handledOptions[this.getId()].openClass)
+            this.box.addClass(this.handledOptions[this.getId()].openClass);
+        this.parent(options);
+    },
+
     hide: function() {
         this.parent();
+        if (this.handledOptions[this.getId()].openClass)
+            this.box.removeClass(this.handledOptions[this.getId()].openClass);
+
         if (this.savedHash && this.savedHash === location.hash) {
             this.savedHash = false;
             history.back();
