@@ -448,7 +448,7 @@ Modal.BootStrap = new Class({
 
         if (props.modalCustomClass) {
             // add and remove class on show/hide, eg, .autoWidth as per demo.
-            options.openClass = props.modalModalClass;
+            options.openClass = props.modalCustomClass;
         }
 
         // set an ID so that it knows the trigger element (for toggle)
