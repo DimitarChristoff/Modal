@@ -527,8 +527,9 @@ Modal.BootStrap = new Class({
 
     hide: function() {
         this.parent();
-        if (this.handledOptions[this.getId()].openClass)
-            this.box.removeClass(this.handledOptions[this.getId()].openClass);
+        if (this.handledOptions[this.getId()].openClass) {
+            this.box.removeClass.delay(500, this.box, this.handledOptions[this.getId()].openClass);
+        }
 
         if (this.savedHash && this.savedHash === location.hash) {
             this.savedHash = false;
