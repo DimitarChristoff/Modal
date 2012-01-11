@@ -33,11 +33,13 @@ body {
     background-repeat: repeat;
     background-scroll: scroll;
     background-position: 0 0;
-    background-color: transparent;
-    background-image: -moz-radial-gradient(circle , #FFFFFF, #291A49);
-    background-image: -webkit-radial-gradient(circle , #FFFFFF, #291A49);
-    background-image: -ms-radial-gradient(circle , #FFFFFF, #291A49);
-    background-image: -o-radial-gradient(circle , #FFFFFF, #291A49);
+    background-color: rgb(241,210,194);
+    background-image: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0.56) 0%, rgba(241,210,194,1) 100%);
+    background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0.56)), color-stop(100%,rgba(241,210,194,1)));
+    background-image: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0.56) 0%,rgba(241,210,194,1) 100%);
+    background-image: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,0.56) 0%,rgba(241,210,194,1) 100%);
+    background-image: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0.56) 0%,rgba(241,210,194,1) 100%);
+    background-image: radial-gradient(center, ellipse cover, rgba(255,255,255,0.56) 0%,rgba(241,210,194,1) 100%);
 }
 
 .modal-box {
@@ -52,10 +54,10 @@ body {
     left: 100%;
     visibility: hidden;
     text-align: left;
+    border-collapse:separate;
 }
 
 .autoWidth {
-    text-align: center;
     width: auto;
     max-width: none;
     display: inline-block;
