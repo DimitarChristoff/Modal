@@ -423,7 +423,7 @@ Modal.BootStrap = new Class({
         }
 
         // is it already shown? only works w/o overlay as it's click-driven. acts as toggle.
-        if (this.getId() == el.uid && this.isShown) {
+        if (this.getId() == Slick.uidOf(el) && this.isShown) {
             this.hide();
             return;
         }
@@ -452,7 +452,7 @@ Modal.BootStrap = new Class({
         }
 
         // set an ID so that it knows the trigger element (for toggle)
-        this.setId(el.uid);
+        this.setId(Slick.uidOf(el));
 
         // set the title of the modal
         this.setTitle(this.getData(props.modalTitle));
