@@ -1,3 +1,4 @@
+// check under resources, references github
 /*
 ---
 
@@ -9,7 +10,7 @@ authors: Daniel Buchner, Dimitar Christoff, Simon Smith
 
 license: MIT-style license.
 
-version: 1.07
+version: 1.08
 
 requires:
   - Core/String
@@ -110,7 +111,7 @@ Modal.Base = new Class({
         footer: "",
         useTransitions: true && Modernizr.csstransitions,
         transitionClass: "transition",
-		transitionClassBox: "modal-box-initial",
+        transitionClassBox: "modal-box-initial",
         transitionShowClass: "modal-visible",
         fx: {
             duration: 400,
@@ -167,7 +168,7 @@ Modal.Base = new Class({
 
         if (this.options.useTransitions) {
             this.box.addClass(this.options.transitionClass);
-			this.box.addClass(this.options.transitionClassBox);
+            this.box.addClass(this.options.transitionClassBox);
         }
 
         this.content = this.box.getElement('div.modal-content');
@@ -384,6 +385,7 @@ Modal.BootStrap = new Class({
     attachBootstrap: function(mask) {
         // what elements to listen on.
         mask = mask || this.options.modalLinks;
+        this.triggerElements = this.container.getElements(mask);
         this.container.addEvent(["click:relay(",mask,")"].join(""), this.handleClick.bind(this));
         return this;
     },
@@ -393,9 +395,23 @@ Modal.BootStrap = new Class({
         e && e.preventDefault && e.preventDefault();
 
         var el = e.target;
+        
         if (!el)
             return;
 
+        // when delegation is fired by a child element
+        if (!this.triggerElements.contains(el)) {
+            var parents = this.triggerElements.filter(function(parent) {
+                return parent.getElement(el);
+            });
+            
+            if (parents.length)
+                el = parents.getLast();
+            else
+                return; // could not find a delegator.
+        }
+        
+       
         // grab all properties we want
         var props = {};
         Object.each(this.options.props, function(value, key) {
@@ -581,3 +597,17 @@ Modal.BootStrap = new Class({
 
 
 })();
+
+
+
+new Modal.BootStrap(document.body, {
+    onConfirm: function() {
+        this.hide();
+        alert("you rocked!");
+    },
+    onCancel: function() {
+        this.hide();
+
+    }
+});
+
