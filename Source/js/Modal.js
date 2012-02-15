@@ -385,32 +385,19 @@ Modal.BootStrap = new Class({
     attachBootstrap: function(mask) {
         // what elements to listen on.
         mask = mask || this.options.modalLinks;
-        this.triggerElements = this.container.getElements(mask);
-        this.container.addEvent(["click:relay(",mask,")"].join(""), this.handleClick.bind(this));
+        var self = this;
+        this.container.addEvent(["click:relay(",mask,")"].join(""), function(e) {
+            self.handleClick(e, this);
+        });
         return this;
     },
 
-    handleClick: function(e) {
+    handleClick: function(e, el) {
         // when container click has found a match
         e && e.preventDefault && e.preventDefault();
 
-        var el = e.target;
-        
         if (!el)
             return;
-
-        // when delegation is fired by a child element
-        if (!this.triggerElements.contains(el)) {
-            var parents = this.triggerElements.filter(function(parent) {
-                return parent.getElement(el);
-            });
-            
-            if (parents.length)
-                el = parents.getLast();
-            else
-                return; // could not find a delegator.
-        }
-        
        
         // grab all properties we want
         var props = {};
@@ -597,17 +584,3 @@ Modal.BootStrap = new Class({
 
 
 })();
-
-
-
-new Modal.BootStrap(document.body, {
-    onConfirm: function() {
-        this.hide();
-        alert("you rocked!");
-    },
-    onCancel: function() {
-        this.hide();
-
-    }
-});
-
