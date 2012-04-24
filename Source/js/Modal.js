@@ -162,7 +162,13 @@ Modal.Base = new Class({
 
         // save references
         this.element = proxy.getFirst().store('modal', this).inject(this.container);
-        this.box = this.element.getElement('div.modal-box').set('morph', this.options.fx).setStyles({
+        this.box = this.element.getElement('div.modal-box').set({
+            'morph': this.options.fx,
+            'aria-hidden': true,
+            'id': 'modal',
+            'role': 'dialog',
+            'aria-labelledby': 'modal-header'
+        }).setStyles({
             'opacity': 0
         });
 
@@ -174,8 +180,11 @@ Modal.Base = new Class({
         this.content = this.box.getElement('div.modal-content');
         this.body = this.content.getFirst();
         this.footer = this.content.getNext();
-        this.header = this.content.getPrevious();
-        this.closeButton = this.header.getPrevious();
+        this.header = this.content.getPrevious().set('aria-label', 'modal-header');
+        this.closeButton = this.header.getPrevious().set({
+            'role': 'button',
+            'aria-controls': 'modal'
+        });
         this.wrapper = this.box.getParent();
 
         // modal instance id for toggling...
@@ -263,6 +272,7 @@ Modal.Base = new Class({
 
         this.isShown = true;
         this.box.store("options", options);
+        this.box.set('aria-hidden', false);
         this.fireEvent('show');
 
         return this;
@@ -290,6 +300,7 @@ Modal.Base = new Class({
         if (this.options.overlay)
             this.overlay.hide();
 
+        this.box.set('aria-hidden', true);
         this.fireEvent('hide');
 
         return this;
