@@ -385,6 +385,11 @@ Modal.BootStrap = new Class({
 
     handledOptions: {},
 
+    boundEvents: {
+        open: {},
+        close: {}
+    },
+
     initialize: function(container, options) {
         this.setOptions(options);
         this.parent(container, this.options);
@@ -411,12 +416,21 @@ Modal.BootStrap = new Class({
             return;
        
         // grab all properties we want
-        var props = {};
+        e && e.preventDefault && e.preventDefault();
+
+        var el = e.target;
+        if (!el)
+            return;
+
+        // grab all properties we want
+        var props = {}
+            uid = Slick.uidOf(el),
+            self = this;
+
         Object.each(this.options.props, function(value, key) {
             props[key] = el.get(value) || "";
         });
 
-        var self = this;
         // store local options as they override the class options, more than 1 instance can exist
         // and can behave differently. see .show which stores the passed options.
         var options = Object.clone(this.options);
@@ -443,22 +457,24 @@ Modal.BootStrap = new Class({
         }
 
         // custom events
-        if (this.boundOpenEvent)
-            this.removeEvent("show", this.boundOpenEvent);
-        if (this.boundCloseEvent)
-            this.removeEvent("hide", this.boundCloseEvent);
-
         if (props.modalOpenEvent) {
             // open
-            this.boundOpenEvent = this.boundOpenEvent || this.fireEvent.bind(this, props.modalOpenEvent);
-            this.addEvent("show", this.boundOpenEvent);
+            this.boundEvents.open[uid] = this.boundEvents.open[uid] || this.fireEvent.bind(this, props.modalOpenEvent);
+            this.addEvent("show", function() {
+                self.boundEvents.open[uid]();
+                self.removeEvent("show", arguments.callee);
+            });
         }
 
         if (props.modalCloseEvent) {
             // close
-            this.boundCloseEvent = this.boundCloseEvent || this.fireEvent.bind(this, props.modalCloseEvent);
-            this.addEvent("hide", this.boundCloseEvent);
+            this.boundEvents.close[uid] = this.boundEvents.close[uid] || this.fireEvent.bind(this, props.modalCloseEvent);
+            this.addEvent("hide", function() {
+                self.boundEvents.close[uid]();
+                self.removeEvent("hide", arguments.callee);
+            });
         }
+
 
         if (props.modalCustomClass) {
             // add and remove class on show/hide, eg, .autoWidth as per demo.
