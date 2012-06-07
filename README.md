@@ -92,6 +92,8 @@ These are the properties on the trigger elements it can read:
 - `data-any-close` - true|false for allowing clicking outside the modal window to close it (when overlay is on)
 - `data-esc-close` - true|false to bind ESC to close the modal
 - `data-class` - add a class name to `this.box` on show and remove it on hide.
+- `data-event-open` - an event name to fire on open
+- `data-event-close` - an event name to fire on close
 
 From the Options object:
 
