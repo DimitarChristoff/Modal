@@ -1,4 +1,3 @@
-// check under resources, references github
 /*
 ---
 
@@ -23,6 +22,7 @@ provides: Modal.Overlay, Modal.Base, Modal.BootStrap, Modernizr
 
 ...
 */
+
 (function() {
 
 // setup a namespace
